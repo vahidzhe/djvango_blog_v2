@@ -3,9 +3,10 @@ from blog.models import KateqoriyaModel
 from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from ckeditor.fields import RichTextField
+from blog.models.abstract_models import DateAbstractModel
 
 
-class MeqaleModel(models.Model):
+class MeqaleModel(DateAbstractModel):
     basliq = models.CharField(max_length=50)
     kateqoriya = models.ManyToManyField(KateqoriyaModel, related_name='meqale')
     yazi = RichTextField()
@@ -13,8 +14,7 @@ class MeqaleModel(models.Model):
     yazar = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE,
                               related_name='meqaleler')
     slug = AutoSlugField(populate_from='basliq')
-    yaranma_tarixi = models.DateTimeField(auto_now_add=True)
-    redakte_tarixi = models.DateTimeField(auto_now=True)
+    
 
     class Meta:
         db_table = 'meqale'

@@ -3,9 +3,10 @@ from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
 from .meqale import MeqaleModel
+from blog.models.abstract_models import DateAbstractModel
 
 
-class SerhModel(models.Model):
+class SerhModel(DateAbstractModel):
     yazar = models.ForeignKey(
         'account.CustomUserModel', on_delete=models.CASCADE, related_name='serhler')
     yazi = models.TextField()

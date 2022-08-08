@@ -8,7 +8,7 @@ admin.site.register(KateqoriyaModel)
 
 
 
-
+@admin.register(MeqaleModel)
 class MeqaleAdmin(admin.ModelAdmin):
     search_fields = ('basliq','yazi')
     list_display = (
@@ -19,20 +19,18 @@ class MeqaleAdmin(admin.ModelAdmin):
         'yaranma_tarixi',
         'redakte_tarixi'
     )
-admin.site.register(MeqaleModel,MeqaleAdmin)
 
-
+@admin.register(SerhModel)
 class SerhAdmin(admin.ModelAdmin):
     search_fields = ('yazar__username',)
 
     list_display = ('yazar','yaranma_tarixi','redakte_tarixi'
     )
-admin.site.register(SerhModel,SerhAdmin)
 
 
+@admin.register(ElaqeModel)
 class ElaqeAdmin(admin.ModelAdmin):
     search_fields = ('ad_soyad','email')
 
     list_display = ('ad_soyad','email','yaranma_tarixi'
     )
-admin.site.register(ElaqeModel,ElaqeAdmin)
