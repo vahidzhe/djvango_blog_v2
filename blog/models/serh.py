@@ -7,7 +7,7 @@ from .meqale import MeqaleModel
 
 class SerhModel(models.Model):
     yazar = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='serhler')
+        'account.CustomUserModel', on_delete=models.CASCADE, related_name='serhler')
     yazi = models.TextField()
 
     meqale = models.ForeignKey(

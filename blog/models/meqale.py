@@ -10,7 +10,7 @@ class MeqaleModel(models.Model):
     kateqoriya = models.ManyToManyField(KateqoriyaModel, related_name='meqale')
     yazi = RichTextField()
     sekil = models.ImageField(upload_to='meqale_sekilleri')
-    yazar = models.ForeignKey(User, on_delete=models.CASCADE,
+    yazar = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE,
                               related_name='meqaleler')
     slug = AutoSlugField(populate_from='basliq')
     yaranma_tarixi = models.DateTimeField(auto_now_add=True)
