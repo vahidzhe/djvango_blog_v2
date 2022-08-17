@@ -1,2 +1,4 @@
 from .elaqe import elaqe
-from .index import index
+from .anasehife import anasehife
+from .kateqoriya import kateqoriya
+from .meqalelerim import meqalelerim
