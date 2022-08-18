@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ meqale.basliq }}{% endblock title %}
+{% block content %}
+<div class="col-sm-9 mb-4 ">
+
+  
+
+
+  <div class="card mb-3" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{meqale.sekil.url}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{meqale.basliq}}</h5>
+          <p class="card-text">{{meqale.yazi|safe}}</p>
+          <p class="card-text"><small class="text-muted">{{meqale.redakte_tarixi|timesince}} əvvəl redaktə olundu</small></p>
+        </div>
+      </div>
+    </div>
+</div>
+<br/>
+<h3>Şərhlər</h3>
+{% for serh in serhler %}
+    
+
+    
+    <div class="card">
+        <div class="card-body"style="display:flex;flex-direction:row;">
+        <div class = 'm-2'>
+            
+            {% if serh.yazar.avatar %}
+            <img src="{{ serh.yazar.avatar.url }}"class="rounded"class="pt-4"width="75px"height="75px">
+            {% else %}
+            <img src="{% static 'img/no-avatar.png' %}"class="rounded"class="pt-4"width="75px"height="75px">
+            {% endif %}
+                
+            
+        </div>
+        <div >
+            <h5 class="card-title">{{ serh.yazar.username }}</h5>
+            <p class="card-text">{{ serh.yazi }}</p>
+        </div>
+        </div>
+    </div>
+    <br/>
+    {% empty %}
+    <p>Bu məqalə üçün heç bir şərh yazılmayıb..</p>
+    {% endfor %}
+
+
+
+
+
+</div>
+{% endblock content %}
