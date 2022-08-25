@@ -19,6 +19,10 @@
           
         </ul>
         <a class="navbar-brand" href="{% url 'elaqe' %}">Əlaqə</a>
+        {% if request.user.is_superuser %}
+        <a class="navbar-brand" target=blank href="/admin">Admin Panel</a>
+        {% endif %}
+        
         <form action = "{% url 'anasehife' %}" class="d-flex" role="search">
           <input class="form-control me-2" type="search" name = 'sorgu' placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

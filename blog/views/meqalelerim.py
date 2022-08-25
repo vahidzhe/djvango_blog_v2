@@ -6,10 +6,9 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/')
 def meqalelerim(request):
     meqaleler = request.user.meqaleler.order_by('-id')
-    for i in  meqaleler:
-        print(i.kateqoriya)
+    
     sehife = request.GET.get('sehife')
-    paginator  = Paginator(meqaleler,3)
+    paginator  = Paginator(meqaleler,10)
     context = {
         'meqaleler':paginator.get_page(sehife),
         

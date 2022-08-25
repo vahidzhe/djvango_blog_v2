@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}Məqalə yaz{% endblock title %}
+{% block content %}
+<div class="col-sm-9 mb-4 ">
+    <form action= "{% url 'meqale_yaz' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        {{ form.media }}
+        <input  type="submit" class= 'btn btn-dark mt-3' value="Göndər">
+    </form>
+   
+</div>
+
+{% endblock content %}

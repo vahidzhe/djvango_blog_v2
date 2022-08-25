@@ -17,6 +17,13 @@
         <div class="card-body">
           <h5 class="card-title">{{meqale.basliq}}</h5>
           <p class="card-text">{{meqale.yazi|safe}}</p>
+          <p>
+            {% if user == meqale.yazar or user.is_superuser%}
+            <a class='btn btn-primary' href="{% url 'meqale_redakte' slug=meqale.slug %}">Redakte et</a>
+            <a class='btn btn-danger' href="{% url 'meqale_sil' slug=meqale.slug %}">Sil</a>
+            
+          {% endif %}
+          </p>
           <p class="card-text"><small class="text-muted">{{meqale.redakte_tarixi|timesince}} əvvəl redaktə olundu</small></p>
         </div>
       </div>

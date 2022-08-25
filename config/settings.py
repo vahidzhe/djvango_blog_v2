@@ -98,9 +98,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'az-az'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Baku'
 
 USE_I18N = True
 
@@ -119,13 +119,13 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-# Customusermodel 
+# Customusermodel
 AUTH_USER_MODEL = 'account.CustomUserModel'
 
 
-# Media 
+# Media
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

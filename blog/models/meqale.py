@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 from blog.models.abstract_models import DateAbstractModel
 
 
+
 class MeqaleModel(DateAbstractModel):
     basliq = models.CharField(max_length=50)
     kateqoriya = models.ManyToManyField(KateqoriyaModel, related_name='meqale')

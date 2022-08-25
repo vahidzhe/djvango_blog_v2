@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{kateqoriya_adi}}{% endblock title %}
+{% block title %}Məqalələrim{% endblock title %}
 {% block content %}
 <div class="col-sm-9 mb-4 ">
 
@@ -12,7 +12,7 @@
         <th scope="col">id</th>
         <th scope="col">Başlıq</th>
         <th scope="col">Kateqoriya</th>
-        <th scope="col">Yaranma tarixi</th>
+        <th scope="col">Hərəkət</th>
       </tr>
     </thead>
     <tbody>
@@ -21,15 +21,23 @@
         {% for meqale in meqaleler %}
       <tr>
         <th scope="row">{{meqale.id}}</th>
-        <td>{{meqale.basliq}}</td>
+        <td>
+          <a href="{% url 'detay' slug=meqale.slug %}">{{meqale.basliq}}</td></a>
+          
         <td>
         {% for adi  in meqale.kateqoriya.all %}
-          {% if adi %}{% endif %}
+          
           {{ adi }},
 
         {% endfor %}
           </td>
-        <td>{{meqale.yaranma_tarixi|safe}}</td>
+        <td>
+          
+          <a class='btn btn-primary' href="{% url 'meqale_redakte' slug=meqale.slug %}">Redakte et</a>
+            <a class='btn btn-danger' href="{% url 'meqale_sil' slug=meqale.slug %}">Sil</a>
+
+        </td>
+        
       </tr>
       {% empty%}
       <p>Heç bir məqalə tapılmadı..</p>

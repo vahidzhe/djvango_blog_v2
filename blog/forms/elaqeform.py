@@ -1,8 +1,10 @@
+from dataclasses import fields
+from pyexpat import model
 from django import forms
+from blog.models import ElaqeModel
 
 
-class ElaqeForm(forms.Form):
-    email = forms.EmailField(max_length=100, label='E-Mail',widget=forms.EmailInput(attrs={'class':'form-control'}))
-    ad_soyad = forms.CharField(max_length=50,label='Ad Soyad',widget=forms.TextInput(attrs={'class':'form-control'}))
-    yazi = forms.CharField(label='Yazı',widget=forms.Textarea(
-        attrs={'class': 'form-control','rows' : 5}))
+class ElaqeForm(forms.ModelForm):
+    class Meta:
+        model = ElaqeModel
+        fields = ('ad_soyad','email','yazi')
