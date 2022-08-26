@@ -1,6 +1,7 @@
 
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}{{ meqale.basliq }}{% endblock title %}
 {% block content %}
 <div class="col-sm-9 mb-4 ">
@@ -31,10 +32,23 @@
 </div>
 <br/>
 <h3>Şərhlər</h3>
-{% for serh in serhler %}
-    
+{% if request.user.is_authenticated  %}
 
-    
+
+
+<form  method="post">
+  {% csrf_token %}
+  {{serh_form|crispy}}
+  <input type="submit" class='btn btn-dark mb-3 mt-3' value="Göndər">
+</form>
+{% else %}
+<p class='mb-4 mt-4'>Şərh yazmaq üçün giriş etməlisiniz..</p>
+
+{% endif %}
+
+
+{% for serh in serhler %}
+        
     <div class="card">
         <div class="card-body"style="display:flex;flex-direction:row;">
         <div class = 'm-2'>
@@ -50,6 +64,14 @@
         <div >
             <h5 class="card-title">{{ serh.yazar.username }}</h5>
             <p class="card-text">{{ serh.yazi }}</p>
+
+            {% if request.user == serh.yazar or request.user == serh.meqale.yazar %}
+            
+            <p>
+            <a href="{% url 'serh_sil' id=serh.id %}" class = 'btn btn-danger'>Sil</a>
+            </p>
+
+            {% endif %}
         </div>
         </div>
     </div>
