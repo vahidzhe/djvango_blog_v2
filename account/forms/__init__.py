@@ -1,0 +1,2 @@
+from .profil_redakte_form import ProfilRedakteForm
+from .qeydiyyat_form import QeydiyyatForm

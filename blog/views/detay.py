@@ -6,7 +6,7 @@ from blog.forms import SerhYazForm
 
 def detay(request,slug):
     meqale = get_object_or_404(MeqaleModel,slug = slug)
-    serhler =  meqale.serhler.all()
+    serhler =  meqale.serhler.order_by('-id')
 
     serh_form = SerhYazForm(request.POST or None)
 

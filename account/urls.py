@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import cixis
+from .views import cixis,sifre_deyis,profil_redakte,qeydiyyat
 
 
 urlpatterns = [
-    path('cixis',cixis,name='cixis')
+    path('cixis',cixis,name='cixis'),
+    path('sifre_deyis', sifre_deyis, name='sifre_deyis'),
+    path('profil_redakte', profil_redakte, name='profil_redakte'),
+    path('qeydiyyat', qeydiyyat, name='qeydiyyat'),
 ]
