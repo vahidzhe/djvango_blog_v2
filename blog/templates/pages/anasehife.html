@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Ana sehife{% endblock title %}
 {% block content %}
-<div class="col-sm-9 mb-4 ">
+<div {% if request.user.is_authenticated %}class="col-sm-9 mb-4" {%else%}class="col-sm-12 mb-4"{%endif%}>
 
   
   {% for meqale in meqaleler %}

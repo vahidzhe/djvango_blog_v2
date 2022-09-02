@@ -1,5 +1,5 @@
 <div class="row">
     <div class="col-12">
-        <p>Tüm hakları saklıdır.</p>
+        <p>All rights reserved. {% if not request.user.is_authenticated %} <a href = "{% url 'giris' %}">Giriş</a> |<a href =  "{% url 'qeydiyyat' %}">Qeydiyyat</a>|{% endif %} </p>
     </div>
 </div>
