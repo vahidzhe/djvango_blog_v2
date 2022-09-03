@@ -1,9 +1,8 @@
-import imp
 from .elaqe import elaqe
-from .anasehife import anasehife
+from .anasehife import AnaSehife
 from .kateqoriya import kateqoriya
 from .meqalelerim import meqalelerim
-from .detay import detay
+from .detay import Detay
 from .meqale_yaz import meqale_yaz
 from .meqale_redakte import meqale_redakte
 from .meqale_sil import meqale_sil
