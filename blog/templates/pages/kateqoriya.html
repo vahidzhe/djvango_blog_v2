@@ -35,27 +35,27 @@
         
 
         <ul class="pagination">
-          {% if meqaleler.has_previous %}
+          {% if page_obj.has_previous %}
         
             <li class="page-item">
-              <a class="page-link" href="?sehife={{ meqaleler.previous_page_number }}" tabindex="-1" aria-disabled="true">Əvvəlki</a>
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1" aria-disabled="true">Əvvəlki</a>
             </li>
           {% else %}
           <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Əvvəlki</a>
           </li>
           {% endif %}
-          {% for i in meqaleler.paginator.page_range %}
-            {% if meqaleler.number == i %}
+          {% for i in page_obj.paginator.page_range %}
+            {% if page_obj.number == i %}
             <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
             {% else %}
-            <li class="page-item"><a class="page-link" href="?sehife={{i}}">{{i}}</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
             {% endif %}
           {% endfor %}
-          {% if meqaleler.has_next %}
+          {% if page_obj.has_next %}
 
           <li class="page-item">
-            <a class="page-link" href="?sehife={{ meqaleler.next_page_number }}">Növbəti</a>
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Növbəti</a>
           </li>
           {% else %}
           <li class="page-item disabled">
