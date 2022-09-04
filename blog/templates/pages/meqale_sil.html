@@ -1,26 +1,31 @@
-{% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"  >
 
-<div class="modal fade" id="delete-item-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>Are you sure, You want to remove this item?</p>
-            </div>
-            <div class="justify-content-between mb-2 mr-2 text-right">
-                <form method="post"
+
+
+
+
+<div class="modal fade show" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: block;" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This is a vertically centered modal.</p>
+      </div>
+      <div class="modal-footer">
+        <form method="post"
                       id="item-delete-form"
                 >
                     <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancel</button>
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger" id="confirm-delete-item-button">Delete</button>
                 </form>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<script>
-    function delete_user(selected_user){
-        document.getElementById("item-delete-form").action = selected_user.href
-}
-</script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" ></script>

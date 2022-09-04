@@ -3,7 +3,7 @@ from .anasehife import AnaSehife
 from .kateqoriya import KategoriyaList
 from .meqalelerim import meqalelerim
 from .detay import Detay
-from .meqale_yaz import meqale_yaz
+from .meqale_yaz import MeqaleYazCreateView
 from .meqale_redakte import meqale_redakte
-from .meqale_sil import MeqaleDelete
+from .meqale_sil import MeqaleSilDeleteView
 from .serh_sil import serh_sil

@@ -1,25 +1,24 @@
+from curses.ascii import CR
 from django.shortcuts import render, redirect
 from blog.forms import MeqaleYazForm
 from blog.models import MeqaleModel
 from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView
+from django.urls import reverse
 
 
-login_required(login_url='/')
+class MeqaleYazCreateView(CreateView):
+    template_name = 'pages/meqale_yaz.html'
+    model = MeqaleModel
+    fields = ('basliq', 'kateqoriya', 'yazi', 'sekil')
 
+    def get_success_url(self):
+        return reverse('detay', kwargs={'slug': self.object.slug})
 
-def meqale_yaz(request):
-    form = MeqaleYazForm(request.POST or None, files=request.FILES or None)
-
-    if form.is_valid():
+    def form_valid(self, form):
         meqale = form.save(commit=False)
-        meqale.yazar = request.user
+        meqale.yazar = self.request.user
         meqale.save()
         form.save_m2m()
-        
-        return redirect('detay',slug=meqale.slug)
 
-
-    context = {
-        'form': form
-    }
-    return render(request, 'pages/meqale_yaz.html', context=context)
+        return super().form_valid(form)
