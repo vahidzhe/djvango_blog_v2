@@ -19,6 +19,7 @@
           
         </ul>
         <a class="navbar-brand" href="{% url 'elaqe' %}">Əlaqə</a>
+        <a class="navbar-brand" href="{% url 'hakkimda' %}">Hakkımda</a>
         {% if request.user.is_superuser %}
         <a class="navbar-brand" target=blank href="/admin">Admin Panel</a>
         {% endif %}
