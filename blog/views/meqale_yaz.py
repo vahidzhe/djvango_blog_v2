@@ -1,4 +1,4 @@
-from curses.ascii import CR
+
 from django.shortcuts import render, redirect
 from blog.forms import MeqaleYazForm
 from blog.models import MeqaleModel

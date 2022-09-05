@@ -8,49 +8,41 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"  >
   </head>
   <body>
+      
 
+
+    {% include 'components/navbar.html' %}
     
-  {% include 'components/navbar.html' %}
-
-
-
-
     <div class="container mt-3">
-
-
-      {% if messages %}
-          <div class="alert alert-primary" role="alert">
-              {% for message in messages %}
-                      {{ message }}
-              {% endfor %}
-            </div>
+      <div class="row">
+        
+        {% if messages %}
+        <div class="alert alert-primary" role="alert">
+          {% for message in messages %}
+                  {{ message }}
+          {% endfor %}
+      </div>
       {% endif %}
-        
-        <div class="row">
-          {% block content %}
-          
-          {% endblock content %}
 
-        <!-- Sidebar -->
-        
-        {% include 'components/sidebar.html' %}
 
-        <!-- Footer -->
-        {% include 'components/footer.html' %}
+        <div {% if request.user.is_authenticated %} class="col-sm-9" {% else %} class="col-12" {%endif%}>
+        
+        {% block content %}
+        
+
+        {% endblock %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+          {% include 'components/sidebar.html' %}
+        {%endif%}
+      </div>
+
+      {% include 'components/footer.html' %}
 
     </div>
+  
 
-        
-        
-
-    
-    
-    
-    
-    
-    
-    
-    
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}" ></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}" ></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-from .elaqe import elaqe
+from .elaqe import ElaqeFormView
 from .anasehife import AnaSehife
 from .kateqoriya import KategoriyaList
 from .meqalelerim import meqalelerim

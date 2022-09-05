@@ -1,6 +1,6 @@
 from re import template
 from django.urls import path
-from .views import cixis,sifre_deyis,profil_redakte,qeydiyyat
+from .views import cixis, sifre_deyis, profil_redakte, qeydiyyat, ProfilDetailView
 from django.contrib.auth.views import LoginView
 
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('giris', LoginView.as_view(
         template_name='pages/giris.html'
         ), name='giris'),
+    path('user/<str:username>', ProfilDetailView.as_view(), name='profil')
 ]
