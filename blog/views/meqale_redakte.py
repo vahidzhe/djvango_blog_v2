@@ -1,7 +1,22 @@
+from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.forms import MeqaleRedakteForm
 from blog.models import MeqaleModel
 from django.contrib.auth.decorators import login_required
+from django.views.generic import UpdateView
+
+
+class MeqaleRedakteUpdateView(UpdateView):
+    template_name = 'pages/meqale_redakte.html'
+    fields = ('basliq', 'kateqoriya', 'yazi', 'sekil')
+
+    def get_object(self):
+        meqale = get_object_or_404(
+            MeqaleModel, slug=self.kwargs.get('slug'), yazar=self.request.user)
+        return meqale
+
+    def get_success_url(self):
+        return reverse('detay', kwargs={'slug': self.get_object().slug})
 
 
 login_required(login_url='/')
@@ -9,10 +24,9 @@ login_required(login_url='/')
 
 def meqale_redakte(request, slug):
     meqale = get_object_or_404(MeqaleModel, slug=slug)
-    
+
     form = MeqaleRedakteForm(request.POST or None,
                              request.FILES or None, instance=meqale)
-
 
     if form.is_valid():
         form.save()

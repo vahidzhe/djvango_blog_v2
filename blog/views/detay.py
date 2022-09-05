@@ -1,28 +1,31 @@
-from contextlib import redirect_stderr
-import imp
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import MeqaleModel
 from blog.forms import SerhYazForm
+from django.views import View
 
-def detay(request,slug):
-    meqale = get_object_or_404(MeqaleModel,slug = slug)
-    serhler =  meqale.serhler.order_by('-id')
 
-    serh_form = SerhYazForm(request.POST or None)
+class Detay(View):
+    http_method_names = ['get', 'post']
+    serh_form = SerhYazForm
 
-    if serh_form.is_valid():
-        serh = serh_form.save(commit=False)
-        serh.meqale = meqale
-        serh.yazar = request.user
+    def get(self, request, slug):
+        meqale = get_object_or_404(MeqaleModel, slug=slug)
+        serhler = meqale.serhler.order_by('-id')
 
-        serh.save()
-        
-        return redirect('detay',slug=slug)
+        context = {
+            'meqale': meqale,
+            'serhler': serhler,
+            'serh_form': self.serh_form()
+        }
 
-    context = {
-        'meqale':meqale,
-        'serhler':serhler,
-        'serh_form':serh_form
-    }
+        return render(request, 'pages/detay.html', context=context)
 
-    return render(request,'pages/detay.html',context=context)
+    def post(self, request, slug):
+        meqale = get_object_or_404(MeqaleModel, slug=slug)
+        serh_form = self.serh_form(request.POST)
+        if serh_form.is_valid():
+            serh = serh_form.save(commit=False)
+            serh.meqale = meqale
+            serh.yazar = request.user
+            serh.save()
+            return redirect('detay', slug=slug)
