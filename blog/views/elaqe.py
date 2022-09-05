@@ -12,14 +12,3 @@ class ElaqeFormView(FormView):
         form.save()
         return super().form_valid(form)
 
-
-def elaqe(request):
-    form = ElaqeForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('anasehife')
-
-    context = {
-        'form': form
-    }
-    return render(request, 'pages/elaqe.html', context=context)

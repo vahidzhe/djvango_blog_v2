@@ -6,7 +6,6 @@ from ckeditor.fields import RichTextField
 from blog.models.abstract_models import DateAbstractModel
 
 
-
 class MeqaleModel(DateAbstractModel):
     basliq = models.CharField(max_length=50)
     kateqoriya = models.ManyToManyField(KateqoriyaModel, related_name='meqale')
@@ -15,7 +14,6 @@ class MeqaleModel(DateAbstractModel):
     yazar = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE,
                               related_name='meqaleler')
     slug = AutoSlugField(populate_from='basliq')
-    
 
     class Meta:
         db_table = 'meqale'

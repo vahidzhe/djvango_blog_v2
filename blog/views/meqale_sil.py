@@ -2,10 +2,12 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from blog.models import MeqaleModel
 from django.views.generic import DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 
-class MeqaleSilDeleteView(DeleteView):
+class MeqaleSilDeleteView(DeleteView, LoginRequiredMixin):
+    login_url = reverse_lazy('giris')
     template_name = 'pages/meqale_sil.html'
     context_object_name = 'meqale'
     success_url = reverse_lazy('meqalelerim')

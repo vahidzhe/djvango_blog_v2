@@ -1,13 +1,11 @@
-
-from django.shortcuts import render, redirect
-from blog.forms import MeqaleYazForm
 from blog.models import MeqaleModel
-from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class MeqaleYazCreateView(CreateView):
+class MeqaleYazCreateView(CreateView, LoginRequiredMixin):
+    login_url = reverse_lazy('giris')
     template_name = 'pages/meqale_yaz.html'
     model = MeqaleModel
     fields = ('basliq', 'kateqoriya', 'yazi', 'sekil')
