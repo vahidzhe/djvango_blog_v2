@@ -10,5 +10,8 @@ class ElaqeFormView(FormView):
 
     def form_valid(self, form):
         form.save()
+        form.email_gonder(
+            mesaj = form.cleaned_data['yazi']
+        )
         return super().form_valid(form)
 

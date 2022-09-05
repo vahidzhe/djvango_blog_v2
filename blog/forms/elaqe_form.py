@@ -12,5 +12,10 @@ class ElaqeForm(forms.ModelForm):
 
     def email_gonder(self,mesaj):
         send_mail(
-            
+            subject = 'Elaqe formundan yeni mesaj var!',
+            message=mesaj,
+            from_email= None,
+            recipient_list=['gasanzadeh99(@gmail.com','vahidzhe@gmail.com'],
+            fail_silently=False
+
         )
