@@ -5,8 +5,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('', AnaSehife.as_view(), name='anasehife'),
     path('elaqe', ElaqeFormView.as_view(), name='elaqe'),
-    path('kateqoriya/<slug:kateqoriyaSlug>',
-         KategoriyaList.as_view(), name='kateqoriya'),
+    path('email-gonderildi', TemplateView.as_view(template_name='pages/email_gonderildi.html'), name='email-gonderildi'),
+    path('kateqoriya/<slug:kateqoriyaSlug>',KategoriyaList.as_view(), name='kateqoriya'),
     path('meqalelerim', meqalelerim, name='meqalelerim'),
     path('detay/<slug:slug>', Detay.as_view(), name='detay'),
     path('meqale_yaz', MeqaleYazCreateView.as_view(), name='meqale_yaz'),

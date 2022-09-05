@@ -6,7 +6,7 @@ from django.views.generic import FormView
 class ElaqeFormView(FormView):
     form_class = ElaqeForm
     template_name = 'pages/elaqe.html'
-    success_url = '/elaqe/email-gonderildi'
+    success_url = 'email-gonderildi'
 
     def form_valid(self, form):
         form.save()
