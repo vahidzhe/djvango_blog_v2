@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import MeqaleModel
 from blog.forms import SerhYazForm
 from django.views import View
+import logging
+
+logger = logging.getLogger('konu_okuma')
 
 
 class Detay(View):
@@ -11,7 +14,8 @@ class Detay(View):
     def get(self, request, slug):
         meqale = get_object_or_404(MeqaleModel, slug=slug)
         serhler = meqale.serhler.order_by('-id')
-
+        if request.user.is_authenticated:
+            logger.info('konu okundu:' + request.user.username)
         context = {
             'meqale': meqale,
             'serhler': serhler,
