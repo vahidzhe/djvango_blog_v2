@@ -15,7 +15,7 @@ class Detay(View):
         meqale = get_object_or_404(MeqaleModel, slug=slug)
         serhler = meqale.serhler.order_by('-id')
         if request.user.is_authenticated:
-            logger.info('konu okundu:' + request.user.username)
+            logger.info('')
         context = {
             'meqale': meqale,
             'serhler': serhler,

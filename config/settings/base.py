@@ -135,7 +135,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'basit_ifade': {
-            'format': '{process:d} {thread:d} {asctime} {levelname} {message} {name}',
+            'format': '{process:d} {thread:d} {asctime} {levelname} {message} {name} {module} ',
             'style': '{'
         }
     },
