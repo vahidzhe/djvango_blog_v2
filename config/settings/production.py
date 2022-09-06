@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['vahidzhe.com', '127.0.0.1', '3.88.45.157']
+ALLOWED_HOSTS = ['vahidzhe.com', '127.0.0.1', '44.206.234.9']
 
 
 DATABASES = {
@@ -14,6 +14,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
+    
 }
 
 AUTH_PASSWORD_VALIDATORS = [
