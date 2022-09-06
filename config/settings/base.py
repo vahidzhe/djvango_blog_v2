@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # Third party
     'ckeditor',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,5 @@ LOGGING = {
         }
     }
 }
+
+
