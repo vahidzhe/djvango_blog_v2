@@ -7,7 +7,7 @@ ALLOWED_HOSTS = ['vahidzhe.com', '127.0.0.1', '44.206.234.9']
 
 DATABASES = {
     'default': {
-        'ENGINE': ' django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
